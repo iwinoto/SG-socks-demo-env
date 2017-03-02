@@ -6,6 +6,28 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+
+  config.vm.define "dmz", primary: true do |dmz|
+    dmz.vm.box = "ubuntu/xenial64"
+    dmz.vm.network "private_network", ip: "192.168.33.10"
+    dmz.vm.network "public_network", bridge: [
+      "en0: Wi-Fi (AirPort)",
+      "en1: Thunderbolt 1",
+      "en2: Thunderbolt 2"
+      ]
+    dmz.vm.provision "shell",
+      privileged: "true",
+      path: "provision_dmz.sh"
+  end
+
+  config.vm.define "zone1" do |zone1|
+    zone1.vm.box = "ubuntu/xenial64"
+    zone1.vm.network "private_network", ip: "192.168.33.11"
+    zone1.vm.provision "shell",
+      privileged: "true",
+      path: "provision_zone1.sh"
+  end
+
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
@@ -13,7 +35,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   #config.vm.box = "ubuntu/trusty64"
-  config.vm.box = "ubuntu/xenial64"
+  #config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,12 +49,12 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  #config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network"
+  #config.vm.network "public_network"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
