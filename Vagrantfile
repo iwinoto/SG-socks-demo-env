@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "dmz", primary: true do |dmz|
     dmz.vm.box = "ubuntu/xenial64"
+    dmz.vm.hostname = "sgdemo-dmz"
     dmz.vm.network "private_network", ip: "192.168.33.10"
     dmz.vm.network "public_network", bridge: [
       "en0: Wi-Fi (AirPort)",

@@ -1,0 +1,2 @@
+Host localhost 127.0.0.1 192.168.33.10
+   StrictHostKeyChecking="no"
