@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "zone1" do |zone1|
     zone1.vm.box = "ubuntu/xenial64"
+    zone1.vm.hostname = "sgdemo-zone1"
     zone1.vm.network "private_network", ip: "192.168.33.11"
     zone1.vm.provision "shell",
       privileged: "true",

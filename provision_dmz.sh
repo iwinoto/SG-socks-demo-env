@@ -6,6 +6,7 @@
 # ref: http://www.catonmat.net/blog/linux-socks5-proxy/
 #
 
+sudo apt-get update
 UBUNTU_HOME=/home/ubuntu
 
 echo "configue IPTables"
@@ -41,3 +42,6 @@ sudo cp /vagrant/SGClient_config/aclconfig /etc/ibm/secure-gateway
 #wget --no-check-certificate -O ibm-securegateway-client_amd64.deb https://sgmanagerqa1.integration.ibmcloud.com/installers/ibm-securegateway-client-1.7.0+client_amd64.deb
 cp /vagrant/securegateway_client-1.7.0/ibm-securegateway-client-1.7.0_amd64.deb ibm-securegateway-client_amd64.deb
 sudo dpkg -i ibm-securegateway-client_amd64.deb
+
+echo "Install mysql-client for testing the connection to zone1"
+sudo apt-get install mysql-client
