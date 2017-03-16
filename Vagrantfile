@@ -7,6 +7,15 @@
 # you're doing.
 Vagrant.configure("2") do |config|
 
+  config.vm.define "zone1" do |zone1|
+    zone1.vm.box = "ubuntu/xenial64"
+    zone1.vm.hostname = "sgdemo-zone1"
+    zone1.vm.network "private_network", ip: "192.168.33.11"
+    zone1.vm.provision "shell",
+      privileged: "true",
+      path: "provision_zone1.sh"
+  end
+
   config.vm.define "dmz", primary: true do |dmz|
     dmz.vm.box = "ubuntu/xenial64"
     dmz.vm.hostname = "sgdemo-dmz"
@@ -19,15 +28,6 @@ Vagrant.configure("2") do |config|
     dmz.vm.provision "shell",
       privileged: "true",
       path: "provision_dmz.sh"
-  end
-
-  config.vm.define "zone1" do |zone1|
-    zone1.vm.box = "ubuntu/xenial64"
-    zone1.vm.hostname = "sgdemo-zone1"
-    zone1.vm.network "private_network", ip: "192.168.33.11"
-    zone1.vm.provision "shell",
-      privileged: "true",
-      path: "provision_zone1.sh"
   end
 
   # The most common configuration options are documented and commented below.

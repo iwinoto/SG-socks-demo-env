@@ -4,7 +4,9 @@ sudo apt-get update
 UBUNTU_HOME=/home/ubuntu
 MYSQL_ROOT_PWORD=zone1
 
-echo "configue IPTables"
+echo "set up ssh keys to accept connections from dmz"
+cat /vagrant/dmz/ssh/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
+cat /vagrant/dmz/ssh/ubuntu/id_rsa.pub >> /root/.ssh/authorized_keys
 
 echo "install mySQL"
 # store password for debconf so we get a silent install
@@ -20,5 +22,5 @@ echo "Initialise database"
 mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/create_data_albums.sql
 mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/data.sql
 
-echo "set up ssh keys to accept connections from dmz"
-cat /vagrant/ssh/dmz/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
+echo "configue IPTables."
+sudo iptables-restore < /vagrant/server-config/zone1/iptables-rules.v4
