@@ -22,7 +22,7 @@ sudo chown -R root:root /root/.ssh/
 
 echo "set up SOCKS proxy to zone1"
 # ref: http://www.catonmat.net/blog/linux-socks5-proxy/
-sudo ssh -f -N -D 1080 192.168.33.11
+#sudo ssh -f -N -D 1080 192.168.33.11
 
 echo "install Secure Gateway client"
 SG_VER=1.7.0
@@ -33,8 +33,8 @@ sudo cp /vagrant/SGClient_config/sgenvironment.conf /etc/ibm/sgenvironment.conf
 sudo cp /vagrant/SGClient_config/aclconfig /etc/ibm/secure-gateway
 
 # QA1 download site does not have a ca signed cert, so need to use --no-check-certificate
-wget --no-check-certificate -qO ibm-securegateway-client_amd64.deb https://sgmanagerqa1.integration.ibmcloud.com/installers/ibm-securegateway-client-1.7.0+client_amd64.deb
-#cp /vagrant/securegateway_client/ibm-securegateway-client-1.7.0_amd64.deb ibm-securegateway-client_amd64.deb
+#wget --no-check-certificate -qO ibm-securegateway-client_amd64.deb https://sgmanagerqa1.integration.ibmcloud.com/installers/ibm-securegateway-client-1.7.0+client_amd64.deb
+cp /vagrant/securegateway_client/ibm-securegateway-client-1.7.0_amd64.deb ibm-securegateway-client_amd64.deb
 sudo dpkg -i ibm-securegateway-client_amd64.deb
 
 echo "Install mysql-client for testing the connection to zone1"

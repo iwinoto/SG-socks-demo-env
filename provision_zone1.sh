@@ -23,4 +23,4 @@ mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/create_data_albums
 mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/data.sql
 
 echo "configue IPTables."
-sudo iptables-restore < /vagrant/server-config/zone1/iptables-rules.v4
+#sudo iptables-restore < /vagrant/server-config/zone1/iptables-rules.v4
