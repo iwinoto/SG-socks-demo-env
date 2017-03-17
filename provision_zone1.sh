@@ -5,8 +5,8 @@ UBUNTU_HOME=/home/ubuntu
 MYSQL_ROOT_PWORD=zone1
 
 echo "set up ssh keys to accept connections from dmz"
-cat /vagrant/dmz/ssh/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
-cat /vagrant/dmz/ssh/ubuntu/id_rsa.pub >> /root/.ssh/authorized_keys
+cat /vagrant/server-config/dmz/ssh/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
+cat /vagrant/server-config/dmz/ssh/ubuntu/id_rsa.pub >> /root/.ssh/authorized_keys
 
 echo "install mySQL"
 # store password for debconf so we get a silent install

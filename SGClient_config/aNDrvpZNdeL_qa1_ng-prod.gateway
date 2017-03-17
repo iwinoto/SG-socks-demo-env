@@ -1,0 +1,1 @@
+{"desc":"Telstra-Proxy","enf_tok_sec":true,"destinations":[{"desc":"mysql","ip":"192.168.33.11","port":"3306","proxy":{"ip":"localhost","port":"1080","type":"5"},"enforceProxy":true,"sni":null,"protocol":"TCP","TLS":"none","private":false,"ip_table_rules":[],"enable_client_tls":false,"client_tls":"none","isDW":false}]}
