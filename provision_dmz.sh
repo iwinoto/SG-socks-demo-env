@@ -14,11 +14,13 @@ sudo -u ubuntu cp /vagrant/server-config/dmz/ssh/ubuntu/config $UBUNTU_HOME/.ssh
 sudo -u ubuntu cp /vagrant/server-config/dmz/ssh/ubuntu/id_rsa $UBUNTU_HOME/.ssh
 #cat /vagrant/server-config/dmz/ssh/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
 sudo chown -R ubuntu:ubuntu $UBUNTU_HOME/.ssh/
+sudo chmod go-r -R $UBUNTU_HOME/.ssh/
 
 sudo cp /vagrant/server-config/dmz/ssh/ubuntu/config /root/.ssh
 sudo cp /vagrant/server-config/dmz/ssh/ubuntu/id_rsa /root/.ssh
 #cat /vagrant/server-config/dmz/ssh/ubuntu/id_rsa.pub >> $UBUNTU_HOME/.ssh/authorized_keys
 sudo chown -R root:root /root/.ssh/
+sudo chmod go-r -R /root/.ssh/
 
 echo "set up SOCKS proxy to zone1"
 # ref: http://www.catonmat.net/blog/linux-socks5-proxy/
@@ -33,8 +35,8 @@ sudo cp /vagrant/SGClient_config/sgenvironment.conf /etc/ibm/sgenvironment.conf
 sudo cp /vagrant/SGClient_config/aclconfig /etc/ibm/secure-gateway
 
 # QA1 download site does not have a ca signed cert, so need to use --no-check-certificate
-#wget --no-check-certificate -qO ibm-securegateway-client_amd64.deb https://sgmanager.au-syd.bluemix.net/installers/ibm-securegateway-client-1.7.0+client_amd64.deb
-cp /vagrant/securegateway_client/ibm-securegateway-client-1.7.0_amd64-unknown.deb ibm-securegateway-client_amd64.deb
+wget --no-check-certificate -qO ibm-securegateway-client_amd64.deb https://sgmanager.au-syd.bluemix.net/installers/ibm-securegateway-client-1.7.0+client_amd64.deb
+#cp /vagrant/securegateway_client/ibm-securegateway-client-1.7.0_amd64-unknown.deb ibm-securegateway-client_amd64.deb
 sudo dpkg -i ibm-securegateway-client_amd64.deb
 
 echo "Install mysql-client for testing the connection to zone1"
