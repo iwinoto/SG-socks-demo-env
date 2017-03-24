@@ -2,15 +2,20 @@
 # Modified
 *filter
 :INPUT DROP [0:0]
-:FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+
+# ACCEPT traffic on already established connections or related to already accepted connections
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
 # INPUT chain rules
 -I INPUT -i lo -j ACCEPT
 -I INPUT -p tcp --dport 22 -j ACCEPT
 
 # OUTPUT chain rules
 -I OUTPUT -o lo -j ACCEPT
--I OUTPUT -p tcp --sport 22 -j ACCEPT
+-I OUTPUT -p tcp --sport 22 --dport 22 -j ACCEPT
 
 COMMIT
 # Completed on Thu Mar 16 00:12:47 2017
