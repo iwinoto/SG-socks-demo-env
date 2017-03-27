@@ -35,10 +35,15 @@ All going well, `vagrant up` will download and provision the virtual machine. Th
 
 ## Connect to the demonstration environment
 
-Once the virtual machine provisioning is complete, you can open a secure shell to the virtual machine with
+Once the virtual machine provisioning is complete, you can open a secure shell to the `dmz` virtual machine with
 ```
 $ vagrant ssh
 ```
+The `dmz` virtual machine is the default. To connect to the `zone1` virtual machine, use
+```
+$ vagrant ssh zone1
+```
+
 _*Note:* On starting the ssh session you may see a message of `*** System restart required ***`. Exit the ssh session and halt the virtual machine with `vagrant halt` and start it again with `vagrant up`. This will restart the virtual machine without re-provisioning. Then restart the ssh session._
 
 ## Shutdown
