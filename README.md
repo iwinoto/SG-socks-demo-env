@@ -17,7 +17,7 @@ The DMZ environment will start the Secure Gateway Client as a system up start pr
 
 If you need to change the values after the virtual machine is provisioned, you can _ssh_ into the DMZ virtual machine, change the values in `/etc/ibm/sgenvironment.conf` and restart the Secure Gateway Client. To restart the Secure Gateway Client, execute the following command
 ```
-$ sudo systemctl restart securegateway-client
+dmz$ sudo systemctl restart securegateway-client
 ```
 ## Setup Vagrant with VirtualBox
 
@@ -54,6 +54,11 @@ When you have finished and want to shutdown the virtual machine, first exit the 
 $ vagrant halt
 ```
 You can then restart the virtual machine with `vagrant up`.
+
+After restarting the `dmz`, the SSH proxy will not be started. Restart the SSH proxy by connecting to the `dmz` and executing:
+```
+dmz$ sudo ssh -f -N -D 1080 192.168.33.11
+```
 
 You can also completely destroy the virtual machine with
 

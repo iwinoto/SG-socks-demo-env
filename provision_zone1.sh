@@ -23,4 +23,8 @@ mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/create_data_albums
 mysql --user=root --password=$MYSQL_ROOT_PWORD < /vagrant/sql/data.sql
 
 echo "configue IPTables."
-#sudo iptables-restore < /vagrant/server-config/zone1/iptables-rules.v4
+sudo mkdir -p /etc/iptables
+sudo cp /vagrant/server-config/zone1/iptables-rules.v4 /etc/iptables/rules.v4
+echo "iptables-persistent iptables-persistent/autosave_v4 boolean false" | sudo debconf-set-selections
+echo "iptables-persistent iptables-persistent/autosave_v6 boolean false" | sudo debconf-set-selections
+sudo apt-get -y install iptables-persistent

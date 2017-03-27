@@ -43,4 +43,8 @@ echo "Install mysql-client for testing the connection to zone1"
 sudo apt-get -y install mysql-client
 
 echo "configue IPTables"
-#sudo iptables-restore < /vagrant/server-config/dmz/iptables-rules.v4
+sudo mkdir -p /etc/iptables
+sudo cp /vagrant/server-config/dmz/iptables-rules.v4 /etc/iptables/rules.v4
+echo "iptables-persistent iptables-persistent/autosave_v4 boolean false" | sudo debconf-set-selections
+echo "iptables-persistent iptables-persistent/autosave_v6 boolean false" | sudo debconf-set-selections
+sudo apt-get -y install iptables-persistent
