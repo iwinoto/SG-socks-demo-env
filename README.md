@@ -79,5 +79,8 @@ The Vagrantfile will provision 2 virtual machines called `dmz` and `zone1`. `zon
 
 * port: 3306
 
+## Issues, suggestions
+Please add an [issue](https://github.com/iwinoto/SG-socks-demo-env/issues) in the github repo.
+
 ## References
 * [Secure Gateway documentation](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
