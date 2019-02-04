@@ -5,7 +5,7 @@ A Vagrant provisioned environment for testing and demonstration of Bluemix Secur
 The provisioner creates 2 security zones; a DMZ and a data tier called _zone1_. The environment can be used to demonstrate Bluemix Secure Gateway connectivity to resources residing in the data tier from an application hosted in Bluemix.
 
 The deployment architecture is shown in Figure 1 (below).
-(images/Deployment\ architecture.png)
+![Deployment architecture](/images/Deployment_architecture.png)
 * Figure 1: Environment deployment architecture.
 
 ## Configuration
